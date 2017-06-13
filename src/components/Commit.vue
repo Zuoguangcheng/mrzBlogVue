@@ -2,38 +2,13 @@
   <div>
     <h3>评论：</h3>
 
-    <textarea class="form-control" v-on:input="textareaChange"></textarea>
+    <textarea class="form-control" @input="textareaChange"></textarea>
 
     <div class="clearfix mb40 mt20">
       <button type="button" class="btn btn-primary pull-right" @click="handleSubmit">提交评论</button>
     </div>
     <ul class="list-group">
-      <!--<article v-for="(item, index) in data" :key="index" class="post post-1">
-        <header class="entry-header">
-
-          <router-link :to="{name:'Single', params:{id:item.id}}">
-            <h1 class="entry-title">
-              {{item.title}}
-            </h1>
-          </router-link>
-
-          <div class="entry-meta">
-            <span class="label label-primary">{{text.category[item.category]}}</span>
-            <span class="label label-primary">{{item.update_time}}</span>
-          </div>
-        </header>
-
-        <div class="entry-content clearfix">
-          <p>{{item.content}}</p>
-          <div class="read-more cl-effect-14">
-            <router-link :to="{name:'Single', params:{id:item.id}}">
-              Continue reading <span class="meta-nav">→</span>
-            </router-link>
-          </div>
-        </div>
-      </article>-->
       <li class="list-group-item" v-for="(item, index) in data" :key="index">{{item.content}}</li>
-
     </ul>
 
   </div>
