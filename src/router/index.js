@@ -17,10 +17,10 @@ let router = new Router({
       name: 'Index',
       component: Index,
       /*beforeEnter: (to, from, next) => {
-        setTimeout(function() {
-          next('/register');
-        }, 2000);
-      },*/
+       setTimeout(function() {
+       next('/register');
+       }, 2000);
+       },*/
     }, {
       path: '/single/:id',
       name: 'Single',
@@ -37,15 +37,34 @@ let router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  /*fetch('is_login').then(res => {
-    console.log(res);
-    next('/register')
-  })*/
+  // console.log('from', String(from.path));
+  if (String(to.path) === '/register') {
+    console.log(111);
+    next();
+  } else {
+    fetch('is_login').then(res => {
+      console.log(res.code);
+      if (String(res.code) === '0') {
+        next('/register');
+      } else {
+        next();
+      }
+    });
+  }
 
-  setTimeout(function() {
-    console.log(12121);
-    // next('/register')
-  }, 100)
+  /* setTimeout(function() {
+   console.log(JSON.stringify(window.lll));
+   if (!(window.lll === '232323')) {
+   console.log(1);
+   window.lll = '232323';
+   next('/register');
+
+   } else {
+   console.log(2);
+   next();
+   }
+
+   }, 2000);*/
 });
 
 export default router;
