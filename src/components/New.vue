@@ -4,6 +4,10 @@
     <textarea class="form-control mb20" rows="3" placeholder="请输入文章内容"
               @input="onContentChange"></textarea>
 
+    <div id="editormd">
+      <textarea>### Hello Editor.md !</textarea>
+    </div>
+
 
     <div class="btn-group mb20" data-toggle="buttons" @click="onCategoryChange">
       <label class="btn btn-primary active">
@@ -22,7 +26,6 @@
     </div>
   </div>
 </template>
-
 <script>
   import fetch from '../lib/server';
 
@@ -34,8 +37,20 @@
         content: '',
       };
     },
+
+    mounted() {
+      this.editor = editormd('editormd', {
+        width: '100%',
+        height: 640,
+        path: '../../static/editor.md/lib/',
+        saveHTMLToTextarea: true,
+      });
+    },
+
     methods: {
       onSubmit() {
+
+        console.log('editor', this.editor.getHTML());
         fetch('article_create', {
           category: this.category,
           title: this.title,
@@ -61,6 +76,8 @@
       },
     },
   };
+
+
 </script>
 
 <style>
