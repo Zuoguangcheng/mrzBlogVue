@@ -30,6 +30,10 @@ let router = new Router({
       name: 'New',
       component: New,
     }, {
+      path: '/edit/:id',
+      name: 'Edit',
+      component: New,
+    }, {
       path: '/register/',
       name: 'Register',
       component: Register,

@@ -20,7 +20,7 @@
             </header>
 
             <div class="entry-content clearfix">
-              <p>{{item.content}}</p>
+              <p v-html="item.content"></p>
               <div class="read-more cl-effect-14">
                 <router-link :to="{name:'Single', params:{id:item.id}}">
                   Continue reading <span class="meta-nav">→</span>
@@ -67,7 +67,6 @@
           let windowScroll = $(window).scrollTop();
 
           let difference = Number(contentBodyHeight) - Number(windowHeight) - Number(windowScroll);
-          console.log('difference', difference);
           if (difference <= 0) {
             self.page = self.data.length;
             self.getList();

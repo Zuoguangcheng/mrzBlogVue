@@ -5,7 +5,12 @@
         <main class="col-md-24 mb20">
           <article class="post post-1">
             <header class="entry-header">
-              <h1 class="entry-title">{{data.title}}</h1>
+              <div class="title">
+                <h1 class="entry-title">{{data.title}}</h1>
+                <router-link :to="{name:'Edit', params:{id:id}}">
+                  <span>编辑文章</span>
+                </router-link>
+              </div>
               <div class="entry-meta">
                 <span class="post-category"><a href="#">Web Design</a></span>
 
@@ -17,9 +22,7 @@
                 <span class="comments-link"><a href="#">4 Comments</a></span>
               </div>
             </header>
-            <div class="entry-content clearfix">
-              {{ data.content }}
-            </div>
+            <div class="entry-content clearfix" v-html="data.content"></div>
           </article>
         </main>
         <!--<AsideList></AsideList>-->
@@ -55,3 +58,11 @@
     },
   };
 </script>
+
+<style scoped>
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
