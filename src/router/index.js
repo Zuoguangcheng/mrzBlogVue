@@ -41,6 +41,7 @@ router.beforeEach((to, from, next) => {
   } else {
     fetch('is_login').then(res => {
       if (String(res.code) === '0') {
+        dhtmlx.message({ text: '请登录', type: 'error' });
         next('/register');
       } else {
         next();

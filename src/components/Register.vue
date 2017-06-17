@@ -36,7 +36,13 @@
           name: this.name,
           password: this.password,
         }, 'POST').then(res => {
-          console.log(res);
+          if (String(res.code) === '0') {
+            dhtmlx.message({ text: res.msg, type: 'error' });
+          }
+
+          if (String(res.code) === '1') {
+            dhtmlx.message({ text: res.msg, type: 'success' });
+          }
 
         });
       },
@@ -45,7 +51,15 @@
           name: this.name,
           password: this.password,
         }, 'POST').then(res => {
-          console.log(res);
+
+          if (String(res.code) === '0') {
+            dhtmlx.message({ text: res.msg, type: 'error' });
+          }
+
+          if (String(res.code) === '1') {
+            dhtmlx.message({ text: res.msg, type: 'success' });
+            this.$router.push({ path: '/' });
+          }
 
         });
       },
