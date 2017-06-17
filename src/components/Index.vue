@@ -50,6 +50,7 @@
         page: 0,
         text,
         categoryId: '',
+        month: '',
       };
     },
 
@@ -67,6 +68,8 @@
           let windowScroll = $(window).scrollTop();
 
           let difference = Number(contentBodyHeight) - Number(windowHeight) - Number(windowScroll);
+
+          console.log('difference', difference);
           if (difference <= 0) {
             self.page = self.data.length;
             self.getList();
@@ -74,8 +77,9 @@
         });
       },
 
-      getCategory(id) {
-        this.categoryId = id;
+      getCategory(condition) {
+        this.categoryId = condition.id || '';
+        this.month = condition.month || '';
         this.getList();
       },
 
@@ -83,6 +87,7 @@
         let data = {
           page: this.page,
           category_id: this.categoryId,
+          month: this.month,
         };
         fetch('article_list', data).then(res => {
           this.data = res;
