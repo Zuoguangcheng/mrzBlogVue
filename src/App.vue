@@ -17,9 +17,10 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-                <li class="cl-effect-11"><a data-hover="Home">Home</a></li>
+                <li class="cl-effect-11">
+                  <router-link :to="{name:'Index'}"><a data-hover="Home">Home</a></router-link>
+                </li>
                 <li class="cl-effect-11"><a data-hover="Blog">Blog</a></li>
-
                 <li class="cl-effect-11">
                   <router-link :to="{name:'Register'}">登录</router-link>
                 </li>
@@ -47,7 +48,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <p>啦啦啦</p>
+            <!--<p>啦啦啦</p>-->
           </div>
         </div>
       </div>

@@ -4,12 +4,12 @@
         type="text"
         class="form-control mb20"
         placeholder="请输入文章标题"
-        v-model="title"
+        :value="title"
     >
     <!--<div id="demo" class="demo"></div>-->
 
     <div id="editormd">
-      <textarea id="markdown" v-model="markdown"></textarea>
+      <textarea id="markdown" :value="markdown"></textarea>
     </div>
     <form action="http://127.0.0.1:8000/up_pic" method="post" enctype="multipart/form-data"
           name="upload_form">
@@ -97,17 +97,28 @@
 
     methods: {
       onSubmit() {
-        fetch('article_create', {
-          category: this.category,
-          title: this.title,
-          content: this.content,
-          markdown: this.markdown,
-        }, 'POST').then(res => {
-          console.log(res);
-
-          this.data = res;
-
-        });
+        if (!!this.id) {
+          fetch('article_edit', {
+            id: this.id,
+            category: this.category,
+            title: this.title,
+            content: this.content,
+            markdown: this.markdown,
+          }, 'POST').then(res => {
+            console.log(res);
+            this.data = res;
+          });
+        } else {
+          fetch('article_create', {
+            category: this.category,
+            title: this.title,
+            content: this.content,
+            markdown: this.markdown,
+          }, 'POST').then(res => {
+            console.log(res);
+            this.data = res;
+          });
+        }
       },
 
       onCategoryChange(e) {
@@ -130,6 +141,7 @@
           saveHTMLToTextarea: true,
           onchange: function() {
             self.content = self.editor.getHTML();
+            self.markdown = self.editor.getMarkdown();
           },
         });
       },
@@ -175,5 +187,9 @@
 <style>
   .mb20 {
     margin-bottom: 20px;
+  }
+
+  #editormd {
+    z-index: 9999;
   }
 </style>
