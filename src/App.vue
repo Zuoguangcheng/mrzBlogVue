@@ -20,7 +20,6 @@
                 <li class="cl-effect-11">
                   <router-link :to="{name:'Index'}"><a data-hover="Home">Home</a></router-link>
                 </li>
-                <li class="cl-effect-11"><a data-hover="Blog">Blog</a></li>
                 <li class="cl-effect-11">
                   <router-link :to="{name:'Sign'}">登录</router-link>
                 </li>
@@ -28,6 +27,7 @@
               </ul>
             </div><!-- /.navbar-collapse -->
           </nav>
+
           <div id="header-search-box">
             <a id="search-menu" href="#"><span id="search-icon"
                                                class="ion-ios-search-strong"></span></a>
@@ -38,6 +38,7 @@
               </form>
             </div>
           </div>
+
         </div><!-- col-md-8 -->
       </div>
     </header>

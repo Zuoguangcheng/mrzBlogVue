@@ -8,6 +8,7 @@ import Single from '@/components/Single';
 import New from '@/components/New';
 import Register from '@/components/Register';
 import Sign from '@/components/Sign';
+import FindPassword from '@/components/FindPassword';
 
 Vue.use(Router);
 
@@ -37,6 +38,10 @@ let router = new Router({
       path: '/sign/',
       name: 'Sign',
       component: Sign,
+    }, {
+      path: '/find-password/',
+      name: 'FindPassword',
+      component: FindPassword,
     }],
 });
 

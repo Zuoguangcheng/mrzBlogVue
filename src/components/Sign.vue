@@ -17,6 +17,9 @@
       <router-link :to="{name:'Register'}">
         <input class="btn btn-default" type="submit" value="去注册">
       </router-link>
+      <router-link :to="{name:'FindPassword'}">
+        <input class="btn btn-default" type="submit" value="忘记密码？">
+      </router-link>
     </div>
   </div>
 </template>
@@ -47,7 +50,6 @@
             dhtmlx.message({ text: res.msg, type: 'success' });
             this.$router.push({ path: '/' });
           }
-
         });
       },
     },

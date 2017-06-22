@@ -63,13 +63,16 @@
       watch() {
         let self = this;
         let windowHeight = $(window).height();
-        $(window).on('scroll', function() {
-          let contentBodyHeight = $(document.body).height();
+        $(window).on('scroll', function(e) {
+          let contentBodyHeight = $(document.body).outerHeight();
           let windowScroll = $(window).scrollTop();
 
           let difference = Number(contentBodyHeight) - Number(windowHeight) - Number(windowScroll);
 
           console.log('difference', difference);
+          console.log('contentBodyHeight', contentBodyHeight);
+          console.log('windowHeight', windowHeight);
+          console.log('windowScroll', windowScroll);
           if (difference <= 0) {
             self.page = self.data.length;
             self.getList();
