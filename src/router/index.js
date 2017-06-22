@@ -7,6 +7,7 @@ import Index from '@/components/Index';
 import Single from '@/components/Single';
 import New from '@/components/New';
 import Register from '@/components/Register';
+import Sign from '@/components/Sign';
 
 Vue.use(Router);
 
@@ -32,17 +33,21 @@ let router = new Router({
       path: '/register/',
       name: 'Register',
       component: Register,
+    }, {
+      path: '/sign/',
+      name: 'Sign',
+      component: Sign,
     }],
 });
 
 router.beforeEach((to, from, next) => {
-  if (String(to.path) === '/register') {
+  if (String(to.path) === '/sign') {
     next();
   } else {
     fetch('is_login').then(res => {
       if (String(res.code) === '0') {
         dhtmlx.message({ text: '请登录', type: 'error' });
-        next('/register');
+        next('/sign');
       } else {
         next();
       }

@@ -12,14 +12,11 @@
              placeholder="密码">
     </div>
 
-    <div class="form-group">
-      <label for="exampleInputEmail">邮箱</label>
-      <input v-model="email" type="text" class="form-control" id="exampleInputEmail"
-             placeholder="邮箱">
-    </div>
-
     <div>
-      <input @click="onRegister" class="btn btn-default" type="submit" value="注册">
+      <input @click="onSign" class="btn btn-default" type="submit" value="登录">
+      <router-link :to="{name:'Register'}">
+        <input class="btn btn-default" type="submit" value="去注册">
+      </router-link>
     </div>
   </div>
 </template>
@@ -33,23 +30,22 @@
       return {
         name: '',
         password: '',
-        email: '',
       };
     },
     methods: {
-      onRegister() {
-        fetch('register', {
+      onSign() {
+        fetch('sign', {
           name: this.name,
           password: this.password,
-          email: this.email,
         }, 'POST').then(res => {
+
           if (String(res.code) === '0') {
             dhtmlx.message({ text: res.msg, type: 'error' });
           }
 
           if (String(res.code) === '1') {
             dhtmlx.message({ text: res.msg, type: 'success' });
-            this.$router.push({ path: '/sign' });
+            this.$router.push({ path: '/' });
           }
 
         });

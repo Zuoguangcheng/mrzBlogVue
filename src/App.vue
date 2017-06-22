@@ -22,7 +22,7 @@
                 </li>
                 <li class="cl-effect-11"><a data-hover="Blog">Blog</a></li>
                 <li class="cl-effect-11">
-                  <router-link :to="{name:'Register'}">登录</router-link>
+                  <router-link :to="{name:'Sign'}">登录</router-link>
                 </li>
 
               </ul>
